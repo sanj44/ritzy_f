@@ -24,7 +24,7 @@ export class ProductAddComponent{
 	   if (event.target.files && event.target.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = (event) => {
+		reader.onload = (event:any) => {
 		  this.url1 = event.target.result;
 		}
 		reader.readAsDataURL(event.target.files[0]);
@@ -35,7 +35,7 @@ export class ProductAddComponent{
 	  if (event.target.files && event.target.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = (event) => {
+		reader.onload = (event:any) => {
 		  this.url2 = event.target.result;
 		}
 		reader.readAsDataURL(event.target.files[0]);
@@ -46,7 +46,7 @@ export class ProductAddComponent{
 	  if (event.target.files && event.target.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = (event) => {
+		reader.onload = (event:any) => {
 		  this.url3 = event.target.result;
 		}
 		reader.readAsDataURL(event.target.files[0]);
@@ -57,7 +57,7 @@ export class ProductAddComponent{
 	  if (event.target.files && event.target.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = (event) => {
+		reader.onload = (event:any) => {
 		  this.url4 = event.target.result;
 		}
 		reader.readAsDataURL(event.target.files[0]);
@@ -68,7 +68,7 @@ export class ProductAddComponent{
 	  if (event.target.files && event.target.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = (event) => {
+		reader.onload = (event:any) => {
 		  this.url5 = event.target.result;
 		}
 		reader.readAsDataURL(event.target.files[0]);
@@ -79,7 +79,7 @@ export class ProductAddComponent{
 	  if (event.target.files && event.target.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = (event) => {
+		reader.onload = (event:any) => {
 		  this.url6 = event.target.result;
 		}
 		reader.readAsDataURL(event.target.files[0]);
@@ -90,7 +90,7 @@ export class ProductAddComponent{
     submitProduct(){ 
 	console.log(this.addnewproduct);
 	console.log(this.files);
-	//alert("This is without validation please check console for resullt about product addition.");
+	alert("This is without validation please check console for resullt about product addition.");
        this._product.addProduct(this.addnewproduct, this.files)
 	  .subscribe(addnewproduct => this.addnewproduct = addnewproduct); 
    }
