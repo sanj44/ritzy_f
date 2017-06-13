@@ -1,0 +1,307 @@
+﻿<!-- <div class="col-md-6 col-md-offset-3"> -->
+    <!-- <h1>Home</h1> -->
+    <!-- <p>{{bodyText}}</p> -->
+    <!-- <a (click)="openModal('custom-modal-1')">Open Modal 1</a> -->
+    <!-- <a  class="button" (click)="openModal('custom-modal-2')">Open Modal 2</a> -->
+<!-- </div> -->
+
+<div class="row header">
+  <div class="col-sm-4 col-xs-4"> <a href="#" onClick="opened('cross'); closed('burger'); opened('menu');"><img src="../dist/img/burger-close.png" id="burger" style="margin-left:20px;" /></a> <a href="#" onClick="closed('menu'); closed('cross'); opened('burger');"><i class="fa fa-close" id="cross" style="display:none; margin-left:30px;"></i></a> </div>
+  <div class="col-xs-4 text-center"> <a href="home1.html"><img src="../dist/img/logo.png" style="margin-top:0;"></a> </div>
+  <div class="col-sm-4 col-xs-4 text-right"> <img src="../dist/img/cart.png" /><img src="../dist/img/user-icon.png" style="margin-right:20px; margin-left:20px;" /> </div>
+</div>
+<div class="row">
+  <div class="col-md-2 col-xs-12"></div>
+  <div class="col-md-8 col-xs-12">
+    <div class="row" style="border-bottom:2px solid #d2d2d2; margin-bottom:50px;">
+      <div class="col-md-8 col-xs-6 text-center" style="padding:15px;">
+        <h3 style="font-family:'EB Garamond'; font-size:24px;">BUTTONED-UP OFFICE WEAR</h3>
+        <p style="font-family:'EB Garamond'; font-size:18px;">Get the signature look with these style by us. Exclusive for you.
+          Enjoy the signature look with these from for other
+          look with these from for other</p>
+      </div>
+      <div class="col-md-4 col-xs-6 text-right">
+        <ul class="clipper-wrp">
+          <li class='rhombus'>
+            <div class='clipper'><img src="../dist/img/thumbnail-1.png" style="width:100%;"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 col-xs-12"></div>
+</div>
+<div class="row">
+  <div class="col-md-2 col-xs-12">
+    <div class="row menu">
+      <div class="col-xs-12" id="menu" style="display:none; padding-top:15px; border-top: 3px solid #476215; background-color: #fbfbfb;">
+        <ul id="topHeaderMenu">
+          <li><a href="catalogue.html">All</a></li>
+        </ul>
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <h5 class="decorated"><span><i class="fa fa-star-o"></i></span></h5>
+                </a> </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <ul id="topHeaderMenu1">
+                  <li><a href="category1.html">Buttoned-up Office</a></li>
+                  <li class="divider"></li>
+                  <li><a href="category2.html">Creative Office</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Office Staples</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                <h5 class="decorated"><span><i class="fa fa-shirtsinbulk"></i></span></h5>
+                </a> </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+              <div class="panel-body">
+                <ul id="topHeaderMenu2">
+                  <li><a href="#">Tops</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Skirts</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Dresses</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Trousers</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Scarfs</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Jackets & Coats</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Cardigans</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                <h5 class="decorated"><span><i class="fa fa-tags"></i></span></h5>
+                </a> </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+              <div class="panel-body">
+                <ul id="topHeaderMenu3">
+                  <li><a href="#">On Sale</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8 col-xs-12 catalogue">
+    <div *ngIf="iproducts" class="row catalogue">
+	<div *ngFor="let item of iproducts.result; let i = index">
+      <div *ngIf="i%2==0" class="col-md-6 col-sm-6 col-xs-12 column">
+        <div [ngClass]="{'box':true, 'box-r':i%2==0, 'box-l':i%2==1}">
+          <div class="title"><strong>{{item.productName | uppercase}}</strong></div>
+          <a (click)="openModal('custom-modal-1')" href="javascitp:void(0);">
+		  <img [src]="'data:image/jpeg;base64,'+item.image1" class="img-m" alt="">
+		  </a>
+          <div class="price-tag"><span>$ {{item.stock_ordered}}.00</span></div>
+        </div>
+      </div>	
+      <div *ngIf="i%2==1" class="col-md-6 col-sm-6 col-xs-12 column">
+        <div class="box ">
+          <div class="title text-right"><strong>{{item.productName | uppercase}}</strong></div>
+          <a (click)="openModal('custom-modal-1')" href="javascitp:void(0);">
+		  <img [src]="'data:image/jpeg;base64,'+item.image1" class="img-m" alt="">
+		  </a>
+          <div class="price-tag"><span>$ {{item.stock_ordered}}.00</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row footer">
+  <div class="col-md-2 col-xs-12"></div>
+  <div class="col-md-8 col-xs-12" style="border-bottom:2px solid #d2d2d2; padding:0 20px;">
+    <div class="row">
+      <div class="col-md-8 col-xs-6 text-center">
+        <ul class="clipper-wrp1">
+          <li class='rhombus'>
+            <div class='clipper'><img src="../dist/img/logo-initial.png" style="width:100%;"></div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-xs-6 text-right">
+        <ul class="footer-menu">
+          <li id="ourTale">Our Tale - Our Mission</li>
+          <li><span id="cusGuideBook">Customer Guidebook</span></li>
+          <li><span id="talkToUs">Talk To Us</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 col-xs-12"></div>
+</div>
+
+<modal id="custom-modal-1">
+    <div class="modal">
+        <div class="modal-body">
+            <!-- <h1>A Custom Modal!</h1> -->
+            <!-- <p> -->
+                <!-- Home page text: <input type="text" [(ngModel)]="bodyText" /> -->
+            <!-- </p> 
+            <button (click)="closeModal('custom-modal-1');">Close</button>-->
+			<!--Product Slider stars -->
+			<div style="position: relative;left: 0px;height: 80vh;top: 0px;" class="slider cus-guide-slider" id="productSec"> <a class="sliderclose" (click)="closeModal('custom-modal-1');" id="slidercloseCusGuide"><span>X</span></a>
+			  <div class="col-xs-12 section">
+				<div class="row">
+				  <div class="col-xs-12" style="border:1px solid #ddd;">
+					<div class="row">
+					  <div class="col-xs-12 text-center">
+						<div class="title" style="font-size:30px; font-family: 'EB Garamond'; color:#353434; padding:40px 0;">NATALIE DRESS</div>
+					  </div>
+					</div>
+					<div class="row" style="margin:0;">
+					  <div class="col-sm-1 col-xs-3 section-thumb1" style="padding-top:10px;"> <a href="#" id="1" onClick="editImg('8'); activeThumb();"><img src="../dist/img/8.jpg" onClick="editImg('8');" alt=""></a> <a href="#" id="2" onClick="editImg('thumb_8a');"><img src="../dist/img/thumb_8a.jpg" alt=""></a> <a href="#" id="3" onClick="editImg('thumb_8b');"><img src="../dist/img/thumb_8b.jpg" alt=""></a> <a href="#" id="4" onClick="editImg('thumb_8c');"><img src="../dist/img/thumb_8c.jpg" alt=""></a> 
+						<!--<a href="#" id="5" onClick="editImg('thumb_8d');"><img src="../dist/img/thumb_8d.jpg" alt=""></a>
+									<a href="#" id="6" onClick="editImg('thumb_8e');"><img src="../dist/img/thumb_8e.jpg" alt=""></a> --> 
+					  </div>
+					  <div class="col-sm-3 col-xs-9 section-promo" style="padding:0;"> <a href="#"><img src="../dist/img/8.jpg" id="prodImg" alt=""></a> </div>
+					  <div class="col-sm-8 col-xs-12 column" style="padding: 10px 40px;">
+						<div class="description" style="font-family:'Abel'; font-size:20px;"> On-trend florals decorate the wide leg fit of our updated drawstring pants. Crafted in luxurious Italian silk for a soft to the touch feel, the relaxed silhouette and pockets are elevated for the perfect weekend edit traveling or at home.
+						  <div class="col-xs-12 text-right" style="font-family:abel; font-size:17px; color:#353535"> <i class="fa fa-usd"></i> 999.00 </div>
+						</div>
+						<div class="actions">
+						  <div class="row choices">
+							<div class="col-xs-2">SIZE</div>
+							<div class="col-xs-10">
+							  <select class="select2" style="width:100px;">
+								<option>P</option>
+								<option>S</option>
+								<option>M</option>
+								<option>L</option>
+								<option>XL</option>
+								<option>XXL</option>
+							  </select>
+							  <h6 style="display:inline; margin-left:10px;"><a href="#">View size guide</a></h6>
+							</div>
+						  </div>
+						  <div class="row choices">
+							<div class="col-xs-2">FIT</div>
+							<div class="col-xs-10">
+							  <select class="select2" style="width:100px;">
+								<option>L</option>
+								<option>R</option>
+							  </select>
+							</div>
+						  </div>
+						  <div class="row choices">
+							<div class="col-xs-2">COLOR</div>
+							<div class="col-xs-10"> <span style="display:block;">Coral Red</span> <a href="#" onClick="editImg('img-2m');">
+							  <div class="color c323739 active"></div>
+							  </a> </div>
+						  </div>
+						  <div class="row choices">
+							<div class="col-xs-2">QTY</div>
+							<div class="col-xs-10">
+							  <select class="select2" style="width:100px;">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+							  </select>
+							</div>
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-sm-9 col-xs-12 button-sec text-right pdding-r0">
+							<button value="Add to bag" class="btn-grey">Add to bag</button>
+						  </div>
+						  <div class="col-sm-3 col-xs-12 button-sec text-right pdding-r0">
+							<button value="Check out" class="btn-dark-grey">Check out</button>
+						  </div>
+						</div>
+						<div class="row">
+						  <p style="text-align: center; margin-top:38px;
+				background: #f4f4f4;
+				text-transform: uppercase;
+				font-size: 18px;
+				color: #7c7c7c;
+				font-family: 'Abel';
+				padding: 5px 0;">ComplementAry Shipping and Free Returns</p>
+						</div>
+						<div class="row">
+						  <ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#home">Product Details</a></li>
+							<li><a data-toggle="tab" href="#menu1">Product Enquiry</a></li>
+						  </ul>
+						  <div class="tab-content">
+							<div id="home" class="tab-pane fade in active">
+							  <ul>
+								<li>Shirt collar; chain detail</li>
+								<li>Dolman; short sleeve</li>
+								<li>Button front; hidden placket</li>
+								<li>Pleated back</li>
+								<li>Slits at hem</li>
+								<li>48" long; calf length</li>
+								<li>70% Cotton 30% Silk; Imported</li>
+								<li>Dry clean only</li>
+								<li>Measurements taken from size 8/M</li>
+								<li>Model is 5'11' and wearing size 2/P</li>
+							  </ul>
+							</div>
+							<div id="menu1" class="tab-pane fade">
+							  <div class="row slider-pdt-frm-sec">
+								<div class="col-sm-6 col-xs-12">
+								  <div class="form-group">
+									<label for="name">NAME</label>
+									<input type="name" class="form-control" id="name">
+								  </div>
+								  <div class="form-group">
+									<label for="email">EMAIL ID</label>
+									<input type="email" class="form-control" id="email">
+								  </div>
+								</div>
+								<div class="col-sm-6 col-xs-12">
+								  <div class="form-group">
+									<label for="enq">ENQUERY</label>
+									<textarea class="form-control" rows="5" id="enq"></textarea>
+								  </div>
+								</div>
+								<div class="col-xs-12 button-sec text-right">
+								  <button value="Add to bag" class="btn-grey">Fire away</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<!--Product Slider ends --> 
+        </div>
+    </div>
+    <div class="modal-background"></div>
+</modal>
+
+<modal id="custom-modal-2">
+    <div class="modal">
+        <div class="modal-body">
+            <h1 style="height:1000px">A Tall Custom Modal!</h1>
+            <button (click)="closeModal('custom-modal-2');">Close</button>
+        </div>
+    </div>
+    <div class="modal-background"></div>
+</modal>
+

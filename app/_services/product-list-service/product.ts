@@ -1,0 +1,30 @@
+export interface IProduct { 
+   _id: string; 
+   colorAvailability: string; 
+   productDetail: string; 
+   status: string; 
+   createdDate: string; 
+   aud: string; 
+   sgd: string; 
+   euro: string; 
+   usd: string; 
+   inr: string; 
+   stock_cost: string; 
+   stock_ordered: string; 
+   stock_available: string; 
+   image6: string; 
+   image5: string; 
+   image4: string; 
+   image3: string; 
+   image2: string; 
+   image1: string; 
+   kerywords: string; 
+   dateAvailabilityTo: string; 
+   dateAvailabilityFrom: string; 
+   productDesc: string; 
+   clothingType: string; 
+   productName: string; 
+   categoryId: string; 
+   productId: string; 
+   __v: string; 
+}

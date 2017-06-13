@@ -1,0 +1,348 @@
+﻿<div class="row" style="margin:0; height:100px;">
+	<div class="col-sm-12 text-center"><img src="../dist/img/logo.png"></div>
+</div>
+<div class="row">
+	<div class="col-sm-12 nav-bar">
+		<ul id="topHeaderMenu">
+			<li><a href="order-list.html">Order List</a></li>
+			<li><a href="product-list.html" class="active">Product List</a></li>
+			<li><a href="user-list.html">Customer List</a></li>
+			<li><a href="admin-settings.html">Settings</a></li>
+			<li><a href="logout.html">Logout</a></li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12 title-bar">
+		<div class="title-page"><i class="fa fa-shirtsinbulk icon-list"></i>Mambo Magnolia Italian Silk Dress (P30317-1) / Formal / Pant</div>
+		<!-- <div class="pull-right">
+			Sort by:&nbsp;<select class="select2" style="width:200px;">
+				<option>Customer ID</option>
+				<option>Customer Name</option>
+				<option>Location</option>
+				<option>Last Login</option>
+				<option>Last Buy</option>
+				<option>Orders Placed</option>
+				<option>Orders Closed</option>
+				<option>Total Billing</option>
+				<option>Subscriber</option>
+				<option>Status</option>
+			</select>
+		</div>  -->
+	</div>
+</div>
+<div *ngIf="addnewproduct"  class="row">
+	<div class="col-xs-12 page">
+		<div class="section-title"><i class="fa fa-file-image-o icon-section"></i>Product Images</div>
+		<div class="row" style="padding:20px; border-bottom:2px solid #aaa;">
+			<div class="col-sm-2 box-stats">
+				<img [src]="url1?url1:'../dist/img/img-blank.png'" class="img-thumb">
+				<br><br>
+				<input type="file" class="form-control" style="text-align:right;" (change)="onChange1($event)"/>
+				<br><br>
+				<input type="radio" name="displayImg" value="1">
+				<div style="display:none">Display Image</div>
+			</div>
+			<div class="col-sm-2 box-stats">
+				<img [src]="url2?url2:'../dist/img/img-blank.png'" class="img-thumb">
+				<br><br>
+				<input type="file" class="form-control" style="text-align:right;" (change)="onChange2($event)"/>
+				<br><br>
+				<input type="radio" name="displayImg" value="2">
+				<div style="display:none">Display Image</div>
+			</div>
+			<div class="col-sm-2 box-stats">
+				<img [src]="url3?url3:'../dist/img/img-blank.png'" class="img-thumb">
+				<br><br>
+				<input type="file" class="form-control" style="text-align:right;" (change)="onChange3($event)"/>
+				<br><br>
+				<input type="radio" name="displayImg" value="3">
+				<div style="display:none">Display Image</div>
+			</div>
+			<div class="col-sm-2 box-stats">
+				<img [src]="url4?url4:'../dist/img/img-blank.png'" class="img-thumb">
+				<br><br>
+				<input type="file" class="form-control" style="text-align:right;" (change)="onChange4($event)"/>
+				<br><br>
+				<input type="radio" name="displayImg" value="4">
+				<div style="display:none">Display Image</div>
+			</div>
+			<div class="col-sm-2 box-stats">
+				<img [src]="url5?url5:'../dist/img/img-blank.png'" class="img-thumb">
+				<br><br>
+				<input type="file" class="form-control" style="text-align:right;" (change)="onChange5($event)"/>
+				<br><br>
+				<input type="radio" name="displayImg" value="5">
+				<div style="display:none">Display Image</div>
+			</div>
+			<div class="col-sm-2 box-stats">
+				<img [src]="url6?url6:'../dist/img/img-blank.png'" class="img-thumb">
+				<br><br>
+				<input type="file" class="form-control" style="text-align:right;" (change)="onChange6($event)"/>
+				<br><br>
+				<input type="radio" name="displayImg" value="6">Display Image
+			</div>
+		</div>
+		<div class="section-title"><i class="fa fa-list icon-section"></i>Inventory Summary</div>
+		<div class="row" style="padding:20px; border-bottom:2px solid #aaa;">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 box-stats">
+				Stock Available<br>
+				<input type="number" class="form-control" style="text-align:right;" [(ngModel)]="addnewproduct.stock_available"/>
+			</div>
+			<div class="col-sm-2 box-stats">
+				Stock Ordered<br>
+				<input type="number" class="form-control" style="text-align:right;" [(ngModel)]="addnewproduct.stock_ordered"/>
+			</div>
+			<div class="col-sm-2 box-stats">
+				Total Stock<br>
+				<div class="stats">
+				{{addnewproduct.stock_ordered+addnewproduct.stock_available}}
+				</div>
+			</div>
+			<div class="col-sm-2 box-stats" style="border:0;">
+				Uncleared Stock Value<br>
+				<div class="stats">~ Rs.0.00</div>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+		<div class="row" style="padding-bottom:20px; border-bottom:2px solid #aaa;">
+			<div class="col-sm-6 box">
+				<div class="section-title"><i class="fa fa-vcard icon-section"></i>Product Details</div>
+				<div class="row">
+					<div class="col-xs-5 labels">Product ID<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<input type="text" class="form-control" placeholder="Add Product ID e.g. P30317-1" [(ngModel)]="addnewproduct.productId">
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-xs-5 labels">Product Name<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<input type="text" class="form-control" value="" placeholder="Add Product Name" [(ngModel)]="addnewproduct.productName">
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-xs-5 labels">Product Description<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<textarea class="form-control" style="width:100%;" rows="5" placeholder="Add Product Description" [(ngModel)]="addnewproduct.productDesc"></textarea>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-xs-5 labels">Product Details<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<textarea class="form-control" style="width:100%;" rows="5" placeholder="Add Product Details" [(ngModel)]="addnewproduct.productDetail"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 box">
+				<div class="section-title"><i class="fa fa-cube icon-section"></i>Specifications</div>
+				<div class="row">
+					<div class="col-xs-5 labels">Category<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<select [(ngModel)]="addnewproduct.categoryId" class="select2" style="width:100%;">
+							<option>-- Select Category --</option>
+							<option value="Select Category">Buttoned-up Office Wear</option>
+							<option value="Creative Office Wear">Creative Office Wear</option>
+							<option value="Office Staple Wear">Office Staple Wear</option>
+						</select>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-xs-5 labels">Clothing Type<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<select class="select2" style="width:100%;" [(ngModel)]="addnewproduct.clothingType">
+							<option>-- Select Clothing Type --</option>
+							<option value="Tops">Tops</option>
+							<option value="Skirts">Skirts</option>
+							<option value="Dresses">Dresses</option>
+							<option value="Trousers">Trousers</option>
+							<option value="Scarfs">Scarfs</option>
+							<option value="Jackets & Coats">Jackets & Coats</option>
+							<option value="Cardigans">Cardigans</option>							
+						</select>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-xs-5 labels">Color availability:<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<input type="text" class="form-control" value="" placeholder="Add Color Name" [(ngModel)]="addnewproduct.colorAvailability">
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-xs-5 labels">Size Availability<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<input type="checkbox" style="margin-right:5px;">XL
+						<input type="checkbox" style="margin-right:5px; margin-left:10px;">XS
+						<input type="checkbox" style="margin-right:5px; margin-left:10px;">SM
+						<input type="checkbox" style="margin-right:5px; margin-left:10px;">MD
+						<input type="checkbox" style="margin-right:5px; margin-left:10px;">LG
+						<input type="checkbox" style="margin-right:5px; margin-left:10px;">XL												
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-xs-5 labels">Date Availability<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						From <input type="text" class="form-control" value="" [(ngModel)]="addnewproduct.dateAvailabilityFrom">
+						To <input type="text" class="form-control" value="" [(ngModel)]="addnewproduct.dateAvailabilityTo">
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-xs-5 labels">Keywords<div class="colon">:</div></div>
+					<div class="col-xs-7 data">
+						<input type="text" class="form-control" value="" [(ngModel)]="addnewproduct.kerywords">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="padding-bottom:20px; border-bottom:2px solid #aaa;">
+			<div class="col-xs-12">
+				<div class="section-title"><i class="fa fa-money icon-section"></i>Pricing</div>
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Currency</th>
+						<th>Stock Cost</th>
+						<th>MRP</th>
+						<th>On Sale</th>
+						<th>Sale Price</th>
+						<th>Sale Start Date</th>
+						<th>Sale End Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text-right">1</td>
+						<td>INR (<i class="fa fa-inr"></i>)</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="radio" name="onSale1" value="Yes" checked>Yes
+							<input type="radio" name="onSale1" value="No">No
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="">
+						</td>				
+					</tr>
+					<tr>
+						<td class="text-right">2</td>
+						<td>USD (<i class="fa fa-usd"></i>)</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="radio" name="onSale2" value="Yes" checked>Yes
+							<input type="radio" name="onSale2" value="No">No
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="">
+						</td>				
+					</tr>
+					<tr>
+						<td class="text-right">3</td>
+						<td>EURO (<i class="fa fa-euro"></i>)</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="radio" name="onSale3" value="Yes">Yes
+							<input type="radio" name="onSale3" value="No" checked>No
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" disabled>
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" disabled>
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" disabled>
+						</td>				
+					</tr>
+					<tr>
+						<td class="text-right">4</td>
+						<td>SGD</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="radio" name="onSale4" value="Yes" checked>Yes
+							<input type="radio" name="onSale4" value="No">No
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="">
+						</td>				
+					</tr>
+					<tr>
+						<td class="text-right">5</td>
+						<td>AUD</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" placeholder="Add Value">
+						</td>
+						<td class="text-center">
+							<input type="radio" name="onSale5" value="Yes">Yes
+							<input type="radio" name="onSale5" value="No" checked>No
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" disabled>
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" disabled>
+						</td>
+						<td class="text-center">
+							<input type="text" class="form-control" value="" disabled>
+						</td>				
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+        <div class="row" style="padding:20px;">
+			<div class="col-xs-12 text-center" style="padding:5px 10px;">
+				<button type="button" class="btn btn-addtoCart" onClick="document.location.href='product-list.html';">Cancel</button>
+				<button type="button" class="btn addtoCart" (click)="submitProduct()">Save</button>
+			</div>
+		</div>
+	</div>
+</div>	

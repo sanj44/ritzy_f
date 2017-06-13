@@ -1,0 +1,83 @@
+﻿<!-- <ul *ngIf="iproducts"> -->
+  <!-- <li> -->
+      <!-- {{iproducts.result[0]['productName']}} -->
+  <!-- </li>	 -->
+<!-- </ul> -->
+
+<!-- <ul *ngIf="iproducts"> -->
+  <!-- <li *ngFor="let item of iproducts.result; let i = index"> -->
+    <!-- {{i}} {{item.productName}} -->
+  <!-- </li> -->
+<!-- </ul> -->
+
+<div class="row" style="margin:0; height:100px;">
+	<div class="col-sm-12 text-center"><img src="../dist/img/logo.png"></div>
+</div>
+<div class="row">
+	<div class="col-sm-12 nav-bar">
+		<ul id="topHeaderMenu">
+			<li><a href="order-list.html">Order List</a></li>
+			<li><a href="product-list.html" class="active">Product List</a></li>
+			<li><a href="user-list.html">Customer List</a></li>
+			<li><a href="admin-settings.html">Settings</a></li>
+			<li><a href="logout.html">Logout</a></li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 page">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Product ID</th>
+					<th>Product Name</th>
+					<th>Category</th>
+					<th>Subcategory</th>
+					<th>Size</th>
+					<th>Color</th>
+					<th>Current Stock</th>
+					<th>Pending Orders</th>
+					<th>Pending Refunds</th>
+					<th>Stock After Orders</th>
+					<th>Cart Visibility</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody *ngIf="iproducts">
+				<tr *ngFor="let item of iproducts.result; let i = index">
+					<td>{{i}}</td>
+					<td>P-{{item.productId}}</td>
+					<td>{{item.productName}}</td>
+					<td>{{item.productName}}</td>
+					<td>{{item.clothingType}}</td>
+					<td>X,SM, L, XL</td>
+					<td>{{item.colorAvailability}}</td>
+					<td class="text-center">{{item.stock_available}}</td>
+					<td class="text-center">{{item.stock_available -item.stock_ordered}}</td>
+					<td class="text-center">{{item.stock_ordered}}</td>
+					<td class="text-center">{{item.stock_available}}</td>
+					<td class="text-center">Visible</td>
+					<td><button class="btn btn-default" onClick="document.location.href='product-details.html';">View</button></td>
+				</tr>
+			</tbody>
+		</table>
+		<nav aria-label="Page navigation">
+		  <ul class="pagination">
+		    <li class="disabled">
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li class="active"><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+	</div>
+</div>
